@@ -1,0 +1,883 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito+Sans:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #f5f0e8;
+    color: #3d3d3d;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a, button {
+    outline: none;
+    text-decoration: none;
+}
+
+section {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes floatLeaf {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grow {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ============ BOTÓN MÚSICA ============ */
+.btn-musica {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #5a7d5a;
+    background: rgba(255, 255, 255, 0.9);
+    color: #5a7d5a;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.btn-musica:hover {
+    background: #5a7d5a;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.btn-musica.playing {
+    background: #5a7d5a;
+    color: #fff;
+    animation: sway 2s ease-in-out infinite;
+}
+
+/* ============ HERO ============ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(180deg, #e8e4db 0%, #d4cfc2 50%, #c4b9a8 100%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z' fill='%235a7d5a' fill-opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.hero-leaves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-leaves span {
+    position: absolute;
+    font-size: 20px;
+    color: #5a7d5a;
+    opacity: 0.4;
+    animation: floatLeaf 6s ease-in-out infinite;
+}
+
+.hero-leaves span:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+.hero-leaves span:nth-child(2) { left: 80%; top: 15%; animation-delay: 1s; }
+.hero-leaves span:nth-child(3) { left: 20%; top: 70%; animation-delay: 2s; }
+.hero-leaves span:nth-child(4) { left: 70%; top: 80%; animation-delay: 0.5s; }
+.hero-leaves span:nth-child(5) { left: 50%; top: 40%; animation-delay: 1.5s; }
+.hero-leaves span:nth-child(6) { left: 30%; top: 30%; animation-delay: 2.5s; }
+.hero-leaves span:nth-child(7) { left: 85%; top: 50%; animation-delay: 3s; }
+.hero-leaves span:nth-child(8) { left: 15%; top: 50%; animation-delay: 3.5s; }
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-join {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #7a8a7a;
+    margin-bottom: 30px;
+}
+
+.hero-names {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 44px;
+    color: #2d3a2d;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.and-symbol {
+    display: block;
+    font-size: 28px;
+    color: #5a7d5a;
+    margin: 10px 0;
+}
+
+.hero-date {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #5a5a5a;
+    margin-bottom: 8px;
+}
+
+.hero-venue {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin-bottom: 35px;
+    font-style: italic;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 14px 35px;
+    background: #5a7d5a;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+
+.hero-btn:hover {
+    background: #4a6a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(90, 125, 90, 0.3);
+}
+
+/* ============ INTRO ============ */
+.intro {
+    padding: 80px 20px;
+    background: #f5f0e8;
+    text-align: center;
+}
+
+.intro-container {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.intro-text {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #7a8a7a;
+    margin-bottom: 20px;
+}
+
+.intro-names {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    color: #2d3a2d;
+    margin-bottom: 10px;
+}
+
+.intro-names span {
+    color: #5a7d5a;
+    margin: 0 8px;
+}
+
+.intro-date {
+    font-size: 14px;
+    color: #6a6a6a;
+    letter-spacing: 2px;
+}
+
+/* ============ COUNTDOWN ============ */
+.countdown {
+    padding: 60px 20px;
+    background: #e8e4db;
+    text-align: center;
+}
+
+.countdown-title {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a8a7a;
+    margin-bottom: 30px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.count-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.count-box {
+    width: 65px;
+    height: 65px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.count-box:hover {
+    transform: translateY(-3px);
+}
+
+.count-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    color: #5a7d5a;
+    font-weight: 700;
+}
+
+.count-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    letter-spacing: 1px;
+}
+
+/* ============ FOTOS ============ */
+.fotos {
+    padding: 60px 15px;
+    background: #f5f0e8;
+}
+
+.fotos-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.fotos-icon {
+    font-size: 28px;
+    color: #5a7d5a;
+    margin-bottom: 15px;
+}
+
+.fotos-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #2d3a2d;
+}
+
+.fotos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.foto-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: sepia(0.1);
+}
+
+.foto-item:hover img {
+    transform: scale(1.1);
+}
+
+.foto-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background: linear-gradient(to top, rgba(45, 58, 45, 0.8), transparent);
+    text-align: center;
+}
+
+.foto-overlay span {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* ============ CEREMONIA ============ */
+.ceremonia {
+    padding: 60px 20px;
+    background: #e8e4db;
+}
+
+.ceremonia-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.ceremonia-icon {
+    font-size: 32px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.ceremonia-titulo {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 15px;
+}
+
+.ceremonia-lugar {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: #2d3a2d;
+    margin-bottom: 8px;
+}
+
+.ceremonia-direccion {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+}
+
+.ceremonia-hora {
+    font-size: 15px;
+    color: #5a7d5a;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.ceremonia-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid #5a7d5a;
+    color: #5a7d5a;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.ceremonia-btn:hover {
+    background: #5a7d5a;
+    color: #fff;
+}
+
+/* ============ RECEPCION ============ */
+.recepcion {
+    padding: 60px 20px;
+    background: #f5f0e8;
+}
+
+.recepcion-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.recepcion-icon {
+    font-size: 32px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.recepcion-titulo {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 15px;
+}
+
+.recepcion-lugar {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: #2d3a2d;
+    margin-bottom: 8px;
+}
+
+.recepcion-direccion {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+}
+
+.recepcion-hora {
+    font-size: 15px;
+    color: #5a7d5a;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.recepcion-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid #5a7d5a;
+    color: #5a7d5a;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.recepcion-btn:hover {
+    background: #5a7d5a;
+    color: #fff;
+}
+
+/* ============ INFO ============ */
+.info {
+    padding: 60px 20px;
+    background: #e8e4db;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    text-align: center;
+    padding: 20px 10px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.info-item i {
+    font-size: 22px;
+    color: #5a7d5a;
+    margin-bottom: 12px;
+}
+
+.info-item h4 {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2d3a2d;
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    font-size: 11px;
+    color: #7a7a7a;
+    line-height: 1.5;
+}
+
+/* ============ FRASE ============ */
+.frase {
+    padding: 70px 20px;
+    background: linear-gradient(180deg, #f5f0e8 0%, #d4cfc2 100%);
+    text-align: center;
+}
+
+.frase-content {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.frase-text {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #3d3d3d;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.frase-autor {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #5a7d5a;
+}
+
+/* ============ REGALOS ============ */
+.regalos {
+    padding: 60px 20px;
+    background: #f5f0e8;
+    text-align: center;
+}
+
+.regalos-container {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.regalos-icon {
+    font-size: 32px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.regalos-titulo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #2d3a2d;
+    margin-bottom: 15px;
+}
+
+.regalos-texto {
+    font-size: 13px;
+    color: #6a6a6a;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.regalos-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.regalos-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 25px;
+    background: #5a7d5a;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.regalos-btn:hover {
+    background: #4a6a4a;
+}
+
+.regalos-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 25px;
+    background: transparent;
+    color: #5a7d5a;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: 2px solid #5a7d5a;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.regalos-btn-outline:hover {
+    background: #5a7d5a;
+    color: #fff;
+}
+
+/* ============ INSTAGRAM ============ */
+.instagram {
+    padding: 60px 20px;
+    background: #e8e4db;
+    text-align: center;
+}
+
+.instagram-container {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.instagram-icon {
+    font-size: 32px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.instagram-titulo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #2d3a2d;
+    margin-bottom: 15px;
+}
+
+.instagram-texto {
+    font-size: 13px;
+    color: #6a6a6a;
+    margin-bottom: 20px;
+}
+
+.instagram-user {
+    font-size: 16px;
+    color: #3d3d3d;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.instagram-hash {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: #5a7d5a;
+}
+
+/* ============ RSVP ============ */
+.rsvp {
+    padding: 60px 20px;
+    background: #f5f0e8;
+    text-align: center;
+}
+
+.rsvp-container {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.rsvp-icon {
+    font-size: 32px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.rsvp-titulo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #2d3a2d;
+    margin-bottom: 15px;
+}
+
+.rsvp-texto {
+    font-size: 14px;
+    color: #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.rsvp-detalle {
+    font-size: 12px;
+    color: #8a8a8a;
+    margin-bottom: 25px;
+}
+
+.rsvp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 35px;
+    background: #5a7d5a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.rsvp-btn:hover {
+    background: #4a6a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(90, 125, 90, 0.3);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+    padding: 60px 20px 50px;
+    background: #d4cfc2;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.footer-icon {
+    font-size: 28px;
+    color: #5a7d5a;
+    margin-bottom: 20px;
+}
+
+.footer-nombres {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    color: #2d3a2d;
+    margin-bottom: 10px;
+}
+
+.footer-nombres span {
+    color: #5a7d5a;
+    margin: 0 10px;
+}
+
+.footer-fecha {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #5a7d5a;
+    margin-bottom: 15px;
+}
+
+.footer-mensaje {
+    font-size: 13px;
+    font-style: italic;
+    color: #6a6a6a;
+}
+
+/* ============ MODAL ============ */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(45, 58, 45, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-content {
+    background: #f5f0e8;
+    border-radius: 16px;
+    padding: 35px 25px;
+    max-width: 350px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-titulo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: #2d3a2d;
+    margin-bottom: 25px;
+}
+
+.modal-datos {
+    margin-bottom: 25px;
+}
+
+.modal-item {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.modal-item:last-child {
+    border-bottom: none;
+}
+
+.modal-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 5px;
+}
+
+.modal-value {
+    font-size: 14px;
+    color: #5a7d5a;
+    font-weight: 600;
+}
+
+.modal-cerrar {
+    padding: 12px 35px;
+    background: #5a7d5a;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-cerrar:hover {
+    background: #4a6a4a;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 380px) {
+    .hero-names {
+        font-size: 36px;
+    }
+    
+    .info-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .fotos-grid {
+        grid-template-columns: 1fr;
+    }
+}

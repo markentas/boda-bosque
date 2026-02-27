@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda - Elena & Diego</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <!-- Audio -->
+    <audio id="audio" src="audio/audio.mp3" loop></audio>
+    <button id="btn-musica" class="btn-musica" onclick="toggleMusica()">
+        <i class="fas fa-leaf"></i>
+    </button>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <div class="hero-leaves">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+        <div class="hero-content">
+            <p class="hero-join">Save the Date</p>
+            <div class="hero-names">
+                Elena
+                <span class="and-symbol">♥</span>
+                Diego
+            </div>
+            <p class="hero-date">20 DE SEPTIEMBRE 2026</p>
+            <p class="hero-venue">Finca Los Pinos</p>
+            <a href="#intro" class="hero-btn" onclick="iniciarMusica(); document.getElementById('intro').scrollIntoView({behavior: 'smooth'}); return false;">Ver Invitación</a>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section id="intro" class="intro">
+        <div class="intro-container">
+            <p class="intro-text">Con la bendicíon de nuestras familias</p>
+            <p class="intro-names">Elena <span>&</span> Diego</p>
+            <p class="intro-date">20 de Septiembre 2026</p>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section id="countdown" class="countdown" data-fecha="2026-09-20" data-hora="16:00">
+        <h2 class="countdown-title">Falta poco</h2>
+        <div class="countdown-timer">
+            <div class="count-block">
+                <div class="count-box"><span class="count-number" id="days">00</span></div>
+                <span class="count-label">Días</span>
+            </div>
+            <div class="count-block">
+                <div class="count-box"><span class="count-number" id="hours">00</span></div>
+                <span class="count-label">Horas</span>
+            </div>
+            <div class="count-block">
+                <div class="count-box"><span class="count-number" id="minutes">00</span></div>
+                <span class="count-label">Min</span>
+            </div>
+            <div class="count-block">
+                <div class="count-box"><span class="count-number" id="seconds">00</span></div>
+                <span class="count-label">Seg</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fotos -->
+    <section id="fotos" class="fotos">
+        <div class="fotos-header">
+            <div class="fotos-icon"><i class="fas fa-camera-retro"></i></div>
+            <h2 class="fotos-title">Nuestra Historia</h2>
+        </div>
+        <div class="fotos-grid">
+            <div class="foto-item foto-1">
+                <img src="img/boda1.jpg" alt="Elena & Diego">
+                <div class="foto-overlay"><span>2020</span></div>
+            </div>
+            <div class="foto-item foto-2">
+                <img src="img/boda2.jpg" alt="Elena & Diego">
+                <div class="foto-overlay"><span>2023</span></div>
+            </div>
+            <div class="foto-item foto-3">
+                <img src="img/boda3.jpg" alt="Elena & Diego">
+                <div class="foto-overlay"><span>Hoy</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremonia -->
+    <section id="ceremonia" class="ceremonia">
+        <div class="ceremonia-card">
+            <div class="ceremonia-icon"><i class="fas fa-church"></i></div>
+            <h3 class="ceremonia-titulo">Ceremonia</h3>
+            <p class="ceremonia-lugar">Capilla San José</p>
+            <p class="ceremonia-direccion">Ruta 5 Km 23, Turdera</p>
+            <p class="ceremonia-hora">16:00 hs</p>
+            <a href="https://maps.app.goo.gl/abc123" target="_blank" class="ceremonia-btn">Cómo Llegar</a>
+        </div>
+    </section>
+
+    <!-- Recepcion -->
+    <section id="recepcion" class="recepcion">
+        <div class="recepcion-card">
+            <div class="recepcion-icon"><i class="fas fa-tree"></i></div>
+            <h3 class="recepcion-titulo">Celebración</h3>
+            <p class="recepcion-lugar">Finca Los Pinos</p>
+            <p class="recepcion-direccion">Camino Real 1547, Luján</p>
+            <p class="recepcion-hora">18:00 hs</p>
+            <a href="https://maps.app.goo.gl/abc123" target="_blank" class="recepcion-btn">Cómo Llegar</a>
+        </div>
+    </section>
+
+    <!-- Info -->
+    <section id="info" class="info">
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <h4>Horario</h4>
+                <p>16:00 hs - Ceremonia</p>
+                <p>18:00 hs - Fiesta</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-tshirt"></i>
+                <h4> Dress Code</h4>
+                <p>Elegante Sport</p>
+                <p>Colores tierra</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-car"></i>
+                <h4>Estacionamiento</h4>
+                <p>Disponible en el lugar</p>
+                <p>Servicio de valet</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frase -->
+    <section id="frase" class="frase">
+        <div class="frase-content">
+            <p class="frase-text">"Donde sea que estés, estaré yo. Y donde yo esté, estarás tú."</p>
+            <p class="frase-autor">— Elena & Diego</p>
+        </div>
+    </section>
+
+    <!-- Regalos -->
+    <section id="regalos" class="regalos">
+        <div class="regalos-container">
+            <div class="regalos-icon"><i class="fas fa-gift"></i></div>
+            <h2 class="regalos-titulo">Regalos</h2>
+            <p class="regalos-texto">Tu presencia es nuestro mejor regalo. Si deseas colaborado con nuestra luna de miel, te dejamos nuestras opciones.</p>
+            <div class="regalos-botones">
+                <button class="regalos-btn" onclick="openModal()">
+                    <i class="fas fa-university"></i> Transferencia
+                </button>
+                <a href="https://amazon.com" target="_blank" class="regalos-btn-outline">
+                    <i class="fas fa-box"></i> Lista de Regalos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram -->
+    <section id="instagram" class="instagram">
+        <div class="instagram-container">
+            <div class="instagram-icon"><i class="fab fa-instagram"></i></div>
+            <h2 class="instagram-titulo">Compartí Momentos</h2>
+            <p class="instagram-texto">Etiquetanos en tus fotos para no perdernos nada</p>
+            <p class="instagram-user">@elena.diego.boda</p>
+            <p class="instagram-hash">#BodaEnElBosque</p>
+        </div>
+    </section>
+
+    <!-- Confirmar -->
+    <section id="rsvp" class="rsvp">
+        <div class="rsvp-container">
+            <div class="rsvp-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <h2 class="rsvp-titulo">Confirmá tu Asistencia</h2>
+            <p class="rsvp-texto">Por favor, confirmá antes del <strong>15 de Agosto</strong></p>
+            <p class="rsvp-detalle">Indicá si venís solo/a o con acompañantes</p>
+            <a href="https://wa.me/5491112345678?text=Hola%2C%20quiero%20confirmar%20asistencia%20a%20la%20boda%20de%20Elena%20y%20Diego" target="_blank" class="rsvp-btn">
+                <i class="fab fa-whatsapp"></i> Confirmar
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer" class="footer">
+        <div class="footer-content">
+            <div class="footer-icon"><i class="fas fa-seedling"></i></div>
+            <p class="footer-nombres">Elena <span>&</span> Diego</p>
+            <p class="footer-fecha">20 . 09 . 2026</p>
+            <p class="footer-mensaje">Los esperamos</p>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <h3 class="modal-titulo">Datos de Cuenta</h3>
+            <div class="modal-datos">
+                <div class="modal-item">
+                    <span class="modal-label">Banco</span>
+                    <span class="modal-value">Banco Santander</span>
+                </div>
+                <div class="modal-item">
+                    <span class="modal-label">Alias</span>
+                    <span class="modal-value">ELENA.DIEGO.2026</span>
+                </div>
+                <div class="modal-item">
+                    <span class="modal-label">Titular</span>
+                    <span class="modal-value">Diego Fernández</span>
+                </div>
+            </div>
+            <button class="modal-cerrar" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
