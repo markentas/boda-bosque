@@ -621,26 +621,6 @@ section {
     background: #4a6a4a;
 }
 
-.regalos-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 25px;
-    background: transparent;
-    color: #5a7d5a;
-    font-size: 12px;
-    letter-spacing: 1px;
-    border: 2px solid #5a7d5a;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-}
-
-.regalos-btn-outline:hover {
-    background: #5a7d5a;
-    color: #fff;
-}
-
 /* ============ INSTAGRAM ============ */
 .instagram {
     padding: 60px 20px;
